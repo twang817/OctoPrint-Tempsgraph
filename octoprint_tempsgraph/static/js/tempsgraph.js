@@ -196,7 +196,7 @@ $(function() {
             {
                 $("#temperature-graph").parent().remove();
                 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-                var div_g_height = 720;
+                var div_g_height = Math.max(1320, vh - 120 - 220);
                 $("#temp").prepend('<div class="row-fluid"><div id="div_g" style="max-height:'+div_g_height+'px"></div></div>');
 
                 self.plot = document.getElementById("div_g");
@@ -266,6 +266,7 @@ $(function() {
                     spikemode: 'across',
                     spikesnap: 'data',
                     automargin: false,
+                    fixedrange: false,
                   },
                   images: [
                         {
@@ -301,7 +302,6 @@ $(function() {
                   hovermode: 'x',
                   hoverdistance: 1000,
                   spikedistance: -1,
-		  fixedrange: false,
                 };
 
                 if(!self.ownSettings.showBackgroundImage())
